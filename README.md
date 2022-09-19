@@ -9,7 +9,7 @@ Shell functions I've written and use relatively frequently.
 2. Edit your `~/.zshrc` to include the path of clone with the following lines
 
 ```sh
-fpath=( "/path/to/clone/zshfn/scripts" "${fpath[@]}" )
+fpath=( "/path/to/clone/zshfn" "${fpath[@]}" )
 autoload -Uz $fpath[1]/*(.:t)
 ```
 
