@@ -1,0 +1,33 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+RED="\033[0;31m"
+NC='\033[0m' # No Color
+
+project="fpad"
+
+remove_project () {
+    rm -rf $HOME/$project
+}
+
+create_project () {
+    echo -e "Creating new ${GREEN}$HOME/$project${NC}..." &&
+    flutter create "$HOME/$project" > /dev/null
+}
+
+open_project () {
+    echo -e "Opening in ${GREEN}VS Code${NC}..." &&
+    code -n $HOME/$project &&
+    code -a $HOME/$project/lib/main.dart
+}
+
+check_if_exists () {
+    if [ -d "$HOME/$project" ]; then
+        echo -e "${GREEN}$project${NC} directory already exists. Removing ${RED}$HOME/$project${NC}..." &&
+        remove_project
+    fi
+}
+
+check_if_exists
+create_project
+open_project
