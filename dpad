@@ -16,8 +16,6 @@ create_project () {
 }
 
 open_project () {
-    # echo -e "Running ${GREEN}$project${NC}..." &&
-    # dart run $HOME/$project/bin/$project.dart &&
     echo -e "Opening in ${GREEN}VS Code${NC}..." &&
     code -n $HOME/$project &&
     code -a $HOME/$project/lib/$project.dart $HOME/$project/bin/$project.dart
