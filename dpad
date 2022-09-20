@@ -6,9 +6,6 @@ NC='\033[0m' # No Color
 
 project="dpad"
 
-
-echo -e "Creating new ${GREEN}$HOME/$project${NC}..." &&
-
 remove_project () {
     rm -rf $HOME/$project
 }
