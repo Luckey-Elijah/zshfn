@@ -12,13 +12,18 @@ remove_project () {
 
 create_project () {
     echo -e "Creating new ${GREEN}$HOME/$project${NC}..." &&
-    dart create "$HOME/$project" > /dev/null &&
+    dart create "$HOME/$project" > /dev/null
+}
+
+remove_bin_and_tests () {
+    rm -rf $HOME/$project/bin
+    rm -rf $HOME/$project/test
 }
 
 open_project () {
     echo -e "Opening in ${GREEN}VS Code${NC}..." &&
     code -n $HOME/$project &&
-    code -a $HOME/$project/lib/$project.dart $HOME/$project/bin/$project.dart
+    code -a $HOME/$project/lib/$project.dart
 }
 
 check_if_exists () {
@@ -30,4 +35,5 @@ check_if_exists () {
 
 check_if_exists
 create_project
+remove_bin_and_tests
 open_project
