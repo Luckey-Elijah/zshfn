@@ -12,7 +12,11 @@ remove_project () {
 
 create_project () {
     echo -e "Creating new ${GREEN}$HOME/$project${NC}..." &&
-    flutter create "$HOME/$project" > /dev/null
+    flutter create "$HOME/$project" --platforms=macos --offline 1> /dev/null
+    rm -rf "$HOME/$project/test" "$HOME/$project/.idea" "$HOME/$project/README.md" "$HOME/$project/example.iml"
+    egrep -o '^([^\/]|\/[^\/])*' "$HOME/$project/lib/main.dart" | dart format > "$HOME/$project/lib/_main.dart"
+    rm -rf "$HOME/$project/lib/main.dart"
+    mv "$HOME/$project/lib/_main.dart" "$HOME/$project/lib/main.dart"
 }
 
 open_project () {
